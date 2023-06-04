@@ -1,6 +1,14 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--montserrat);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--montserrat);
+}
+
+body {
+  background: #b993d6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #8ca6db 10%, #b993d6 40%, white 20%); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #8ca6dbb8 8%, #b993d6bc 30%, white 80%);
+  height: 100vh; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  backdrop-filter: blur(20px);
 }
