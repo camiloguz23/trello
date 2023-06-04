@@ -1,7 +1,13 @@
-import './globals.css';
-import { Inter } from 'next/font/google';
+import Providers from '@/providers/Providers';
+import './globals.scss';
+import { Montserrat } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Montserrat({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--montserrate'
+});
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <Providers>
+        <body className={inter.className}>{children}</body>
+      </Providers>
     </html>
   );
 }
