@@ -1,0 +1,55 @@
+.ContentColumn {
+    min-height: 460px;
+    border-radius: 8px;
+    background-color: hsla(0, 100%, 100%, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 1px 1px 32px 0px hsla(0, 100%, 0%, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.TitleContent {
+    background-color: hsla(0, 100%, 100%, 0.4);
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        font-weight: 700;
+    }
+}
+
+.btnPlus {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: auto;
+    margin-bottom: 20px;
+    margin-top: auto;
+    
+
+    button {
+        border-radius: 50%;
+        padding: 10px;
+        background-color: hsla(130, 70%, 50%, 1);
+        color: white;
+        font-weight: 400;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 20px;
+        margin-right: 10px;
+        
+    }
+}
+
+.contentCardTable {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +6,19 @@
   font-family: var(--montserrat);
 }
 
+:root {
+  --lightBlack:hsla(0,0%,0%,0.4);
+  --Black:hsla(0,0%,0%,1);
+  --white: hsla(0,100%,100%,1);
+  --lightPurple:#b993d6;
+  --purple: #b993d6bc;
+  --lightBlue: #8ca6dbb8;
+  --darkPurple: hsla(300, 100%, 50%, 1);
+}
+
 body {
-  background: #b993d6; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #8ca6db 10%, #b993d6 40%, white 20%); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #8ca6dbb8 8%, #b993d6bc 30%, white 80%);
-  height: 100vh; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  backdrop-filter: blur(20px);
+  background: var(--lightPurple);
+  background: linear-gradient(to bottom, var(--lightBlue) 8%, var(--purple) 30%, var(--white) 80%);
+  height: 100vh; 
+  background-repeat: no-repeat;
 }

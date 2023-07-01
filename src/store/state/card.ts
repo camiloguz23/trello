@@ -1,25 +1,25 @@
-import { type Cards } from '@/models';
+import { type Ticket } from '@/models';
 import { createSlice } from '@reduxjs/toolkit';
 
-const infoCardDefault: Cards[] = [];
+const infoCardDefault: Ticket[] = [];
 
 export const cardSlice = createSlice({
   name: 'card',
   initialState: infoCardDefault,
   reducers: {
     onAddCard: (state, action) => {
-      return [...state, action.payload];
+      return action.payload;
     },
     onModifyCard: (state, action) => {
-      const modifyCard: Cards = action.payload;
-      const modify: Cards[] = state.map((card) => {
-        return card.id === modifyCard.id ? modifyCard : card;
+      const modifyCard: Ticket = action.payload;
+      const modify: Ticket[] = state.map((card) => {
+        return card.idTicket === modifyCard.idTicket ? modifyCard : card;
       });
       return modify;
     },
     onDeleteCard: (state, action) => {
-      const deleteIdCard: string = action.payload as string;
-      return state.filter((card) => card.id !== deleteIdCard);
+      const deleteIdCard: number = action.payload as number;
+      return state.filter((card) => card.idTicket !== deleteIdCard);
     }
   }
 });
