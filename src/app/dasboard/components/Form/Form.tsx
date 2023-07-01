@@ -6,6 +6,7 @@ import { useState, type FormEvent } from 'react';
 import { requestCreateTicket } from '@/helper';
 import { useDispatch } from 'react-redux';
 import { onAddCard } from '@/store/state/card';
+import { CircularProgress } from '@mui/material';
 
 interface Prop {
   status: StatusTicket[];
@@ -15,6 +16,7 @@ interface Prop {
 
 function Form({ status, users, onClose }: Prop): JSX.Element {
   const [isEmptyForm, setIsEmptyForm] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const onSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
@@ -23,11 +25,13 @@ function Form({ status, users, onClose }: Prop): JSX.Element {
     const data = Object.fromEntries(new FormData(dataForm));
     const isEmpty: boolean = Object.values(data).some((item) => item === '');
     setIsEmptyForm(isEmpty);
+    setLoading(true)
     void requestCreateTicket(data as CreateTicket).then((info) => {
       if (info.length) {
         dispatch(onAddCard(info));
         onClose(false);
       }
+      setLoading(true)
     });
   };
   return (
@@ -53,7 +57,7 @@ function Form({ status, users, onClose }: Prop): JSX.Element {
             </option>
           ))}
         </select>
-        <Button name='Crear Ticket' type='submit' />
+        {loading ? <CircularProgress /> : <Button name='Crear Ticket' type='submit' />}
         {isEmptyForm && <span className={style.error}>Completar los campos</span>}
       </form>
     </div>

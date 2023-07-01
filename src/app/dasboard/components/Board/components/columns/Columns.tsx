@@ -7,8 +7,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { type StructureStore } from '@/store/store';
 import { requestPutTicket } from '@/helper';
 import { onAddCard } from '@/store/state/card';
-import { Badge } from '@mui/material';
+import { Badge, LinearProgress } from '@mui/material';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { useState } from 'react';
 
 interface Prop {
   title: string;
@@ -19,12 +20,14 @@ interface Prop {
 
 function Columns({ title, columns, idStatus, todos }: Prop): JSX.Element {
   const infoUser: User = useSelector((store: StructureStore) => store.user);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const updateState = (idTicket: number, idState: number): void => {
-    console.log(idTicket);
+    setLoading(true);
     void requestPutTicket(infoUser, idTicket, idState).then((data) => {
       data && dispatch(onAddCard(data));
+      setLoading(false);
     });
   };
 
@@ -50,6 +53,7 @@ function Columns({ title, columns, idStatus, todos }: Prop): JSX.Element {
             <AssignmentIcon color='action' />
           </Badge>
         </div>
+        {loading && <LinearProgress color='secondary' />}
         <div className={style.contentCardTable}>
           {todos.map((item) => (
             <CardsComponent
