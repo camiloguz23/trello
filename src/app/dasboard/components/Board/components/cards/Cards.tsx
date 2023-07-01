@@ -1,9 +1,9 @@
 'use client';
 import { type Ticket } from '@/models';
 import style from './cards.module.scss';
-import { IconButton, Tooltip } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { BtnIcon } from '@/components';
 
 interface Prop {
   card: Ticket;
@@ -19,27 +19,25 @@ function CardsComponent({ card, nextState, nextColum, onUpdate, backColum }: Pro
       <p className={style.description}>{card.description}</p>
       <div className={style.containerBtn}>
         {backColum && (
-          <Tooltip title={`regresar a ${backColum}`}>
-            <IconButton
-              onClick={() => {
-                onUpdate(card.idTicket, nextState - 2);
-              }}
-            >
-              <NavigateBeforeIcon />
-            </IconButton>
-          </Tooltip>
+          <BtnIcon
+            title={`regresar a ${backColum}`}
+            onAction={() => {
+              onUpdate(card.idTicket, nextState - 2);
+            }}
+          >
+            <NavigateBeforeIcon />
+          </BtnIcon>
         )}
 
         {nextColum && (
-          <Tooltip title={`pasarlo a ${nextColum}`}>
-            <IconButton
-              onClick={() => {
-                onUpdate(card.idTicket, nextState);
-              }}
-            >
-              <NavigateNextIcon />
-            </IconButton>
-          </Tooltip>
+          <BtnIcon
+            title={`pasarlo a ${nextColum}`}
+            onAction={() => {
+              onUpdate(card.idTicket, nextState);
+            }}
+          >
+            <NavigateNextIcon />
+          </BtnIcon>
         )}
       </div>
     </div>
