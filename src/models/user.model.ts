@@ -12,3 +12,10 @@ export interface Ticket {
   nameStatus: string;
   idTicket: number;
 }
+
+export interface UserGet {
+  document: number;
+  name: string;
+  email: string;
+  nameRol: string;
+}

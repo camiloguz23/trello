@@ -33,6 +33,7 @@ function CardsComponent({ card, nextState, nextColum, onUpdate, backColum }: Pro
           <BtnIcon
             title={`pasarlo a ${nextColum}`}
             onAction={() => {
+              console.log(card.idTicket, 'idTicket');
               onUpdate(card.idTicket, nextState);
             }}
           >

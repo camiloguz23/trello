@@ -17,6 +17,7 @@ function FormLogin(): JSX.Element {
     event.preventDefault();
     const dataForm: HTMLFormElement = event.target as HTMLFormElement;
     const data = Object.fromEntries(new FormData(dataForm));
+    console.log(data)
     requestLogin(data.email as string, data.password as string)
       .then((res) => {
         dispatch(onAddUser(res.user));

@@ -21,3 +21,15 @@ export const getStatus = async(): Promise<Response> => {
 export const servicePutTicket = async(body: string): Promise<Response> => {
   return await fetch(`${URL}tickets.php`, headerPut(body));
 };
+
+export const servicesUser = async(): Promise<Response> => {
+  return await fetch(`${URL}user.php/`);
+};
+
+export const servicesCreateTicket = async(document: string, description: string, state: string): Promise<Response> => {
+  const data = new URLSearchParams();
+  data.append('document', document);
+  data.append('description', description);
+  data.append('status', state);
+  return await fetch(`${URL}tickets.php`, headerPost(data.toString()));
+};

@@ -19,32 +19,24 @@
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 2px 32px 8px rgba(237, 234, 234, 0.456);
+    gap: 20px;
+    padding: 20px;
+    position: relative;
 
-    label {
-      display: flex;
-      flex-direction: column;
-      width: 90%;
-      padding: 20px;
-
-      input {
-        border: none;
-        margin-top: 10px;
-        font-size: 22px;
-        padding: 6px;
-        border-bottom: 1px solid black;
-        background-color: transparent;
-        outline: none;
-      }
+    select {
+      outline: none;
+      border: none;
+      border-bottom: solid 1px var(--lightBlack);
+      padding: 10px;
+      background-color: transparent;
+      width: 80%;
+      margin-top: 10px 0;
     }
 
-    .checkbox {
-        flex-direction: row;
-        align-items: center;
-        gap: 30px;
-
-        .inputCheckout {
-            border-radius: 50%;
-        }
+    .error {
+      color: red;
+      position: absolute;
+      bottom: 10px;
     }
   }
 }
