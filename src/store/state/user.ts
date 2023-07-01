@@ -6,8 +6,7 @@ const UserDefault: User = {
   email: '',
   name: '',
   nameRol: '',
-  password: '',
-  tickets: []
+  password: ''
 };
 
 export const userSlice = createSlice({
