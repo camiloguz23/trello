@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 'use client';
 import { Button, Input } from '@/components';
 import style from './form.module.scss';
@@ -23,7 +24,6 @@ function FormLogin(): JSX.Element {
       .then((res) => {
         dispatch(onAddUser(res.user));
         dispatch(onAddCard(res.ticket));
-        setLoading(false);
         path.push('/dasboard');
       })
       .catch((err) => {
@@ -37,7 +37,16 @@ function FormLogin(): JSX.Element {
       </div>
       <Input label='email' type='email' name='email' />
       <Input label='password' type='password' name='password' />
-      {loading ? <CircularProgress /> : <Button name='Enviar' type='submit' />}
+      {loading ? (
+        <CircularProgress
+          sx={{
+            marginBottom: '20px',
+            marginTop: 'auto'
+          }}
+        />
+      ) : (
+        <Button name='Enviar' type='submit' />
+      )}
     </form>
   );
 }
