@@ -21,7 +21,7 @@ export const getStatus = async(): Promise<Response> => {
 export const servicePutTicket = async(idTicket: number, state: number): Promise<Response> => {
   const data = new URLSearchParams();
   data.append('id', `${idTicket}`);
-  data.append('status', `${idTicket}`);
+  data.append('status', `${state}`);
   data.append('action', 'edit');
   return await fetch(`${URL}tickets.php`, headerPost(data.toString()));
 };
