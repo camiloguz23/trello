@@ -15,16 +15,10 @@ export const requestLogin = async(email: string, password: string): Promise<{ us
 };
 
 export const requestPutTicket = async(userId: User, idTicket: number, state: number): Promise<Ticket[] | undefined> => {
-  const body = JSON.stringify({
-    id: idTicket,
-    status: state
-  });
-
   if (userId.nameRol.includes('Team') && state === 4) {
     return undefined;
   }
-  console.log(body);
-  await servicePutTicket(body).catch((err) => {
+  await servicePutTicket(idTicket, state).catch((err) => {
     console.log(err);
   });
 

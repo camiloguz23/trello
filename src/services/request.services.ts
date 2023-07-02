@@ -1,4 +1,4 @@
-import { headerPost, headerPut } from './config/header';
+import { headerPost } from './config/header';
 
 const URL = process.env.NODE_ENV === 'development' ? 'http://localhost/api/' : 'https://appisistem.000webhostapp.com/api/';
 
@@ -18,8 +18,12 @@ export const getStatus = async(): Promise<Response> => {
   return await fetch(`${URL}`);
 };
 
-export const servicePutTicket = async(body: string): Promise<Response> => {
-  return await fetch(`${URL}tickets.php`, headerPut(body));
+export const servicePutTicket = async(idTicket: number, state: number): Promise<Response> => {
+  const data = new URLSearchParams();
+  data.append('id', `${idTicket}`);
+  data.append('status', `${idTicket}`);
+  data.append('action', 'edit');
+  return await fetch(`${URL}tickets.php`, headerPost(data.toString()));
 };
 
 export const servicesUser = async(): Promise<Response> => {
@@ -31,5 +35,6 @@ export const servicesCreateTicket = async(document: string, description: string,
   data.append('document', document);
   data.append('description', description);
   data.append('status', state);
+  data.append('action', 'create');
   return await fetch(`${URL}tickets.php`, headerPost(data.toString()));
 };

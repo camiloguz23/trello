@@ -15,14 +15,3 @@ export const headerPost = (body: string): Header => {
     body
   };
 };
-
-export const headerPut = (body: string): Header => {
-  return {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Referer: 'https://trello-theta-swart.vercel.app/'
-    },
-    body
-  };
-};
