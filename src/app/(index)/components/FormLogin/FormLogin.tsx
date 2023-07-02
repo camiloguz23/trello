@@ -24,7 +24,7 @@ function FormLogin(): JSX.Element {
         dispatch(onAddUser(res.user));
         dispatch(onAddCard(res.ticket));
         setLoading(false);
-        path.push('dasboard');
+        path.push('/dasboard');
       })
       .catch((err) => {
         console.log(err);
