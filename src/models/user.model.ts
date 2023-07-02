@@ -4,6 +4,7 @@ export interface User {
   name: string;
   password: string;
   nameRol: string;
+  error?: string;
 }
 export interface Ticket {
   user: number;

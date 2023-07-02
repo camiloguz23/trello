@@ -1,6 +1,6 @@
 /* eslint-disable multiline-ternary */
 'use client';
-import { Button, Input } from '@/components';
+import { Button, Input, MessageError } from '@/components';
 import style from './form.module.scss';
 import { type FormEvent, useState } from 'react';
 import { requestLogin } from '@/helper';
@@ -13,6 +13,7 @@ import { CircularProgress } from '@mui/material';
 function FormLogin(): JSX.Element {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
   const path = useRouter();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -22,8 +23,15 @@ function FormLogin(): JSX.Element {
     setLoading(true);
     requestLogin(data.email as string, data.password as string)
       .then((res) => {
+        if (typeof res.user?.error === 'string' || !res.user?.document) {
+          setMessage('Datos invalidos')
+          setLoading(false)
+          return
+        }
         dispatch(onAddUser(res.user));
         dispatch(onAddCard(res.ticket));
+        setLoading(false)
+        setMessage('')
         path.push('/dasboard');
       })
       .catch((err) => {
@@ -40,13 +48,14 @@ function FormLogin(): JSX.Element {
       {loading ? (
         <CircularProgress
           sx={{
-            marginBottom: '20px',
+            marginBottom: '40px',
             marginTop: 'auto'
           }}
         />
       ) : (
         <Button name='Enviar' type='submit' />
       )}
+      {message && <MessageError message={message} />}
     </form>
   );
 }

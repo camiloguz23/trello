@@ -68,6 +68,7 @@ function Columns({ title, columns, idStatus, todos }: Prop): JSX.Element {
             />
           ))}
         </div>
+        {loading && <LinearProgress color='secondary' />}
       </div>
     </div>
   );
