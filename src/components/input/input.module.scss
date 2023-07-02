@@ -1,0 +1,42 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  position: relative;
+  padding: 1rem;
+  margin: 0 10px;
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 9px 9px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    border-bottom: 1px solid var(--lightBlack);
+    background-color: transparent;
+
+  }
+
+  span {
+    position: absolute;
+    top: 23px;
+    left: 30px;
+    padding: 0 5px;
+    transition: 0.5s;
+    background-color: transparent;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  input:focus +span,input:not(:placeholder-shown)+span {
+    transform: translateY(-30px);
+    background-color: transparent;
+    width: fit-content;
+    border-radius: 20px;
+    font-size: 14px;
+  
+  }
+}

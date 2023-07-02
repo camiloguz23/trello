@@ -1,0 +1,41 @@
+.contentCard {
+    width: 95%;
+    background-color: hsla(0, 100%, 100%, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+    min-height:30px ;
+    box-shadow: 1px 1px 32px 0px hsla(0, 100%, 0%, 0.3);
+    min-height: 80px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+
+    &.Todo {
+        background-color: hsla(230, 100%, 50%, 0.3);
+    }
+
+    &.progress {
+        background-color: hsla(60, 100%, 50%, 0.3);
+    }
+
+    &.done {
+        background-color: hsla(110, 100%, 50%, 0.3);
+    }
+
+    .title {
+        font-weight: 800;
+        margin-bottom: 30px;
+    }
+
+    .description {
+        white-space: break-spaces;
+    }
+
+    .containerBtn {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: end;
+    }
+}

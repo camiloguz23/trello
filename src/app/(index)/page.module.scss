@@ -1,0 +1,12 @@
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+
+    .imgLogin {
+        width: 800px;
+        height: 800px;
+    }
+}
