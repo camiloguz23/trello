@@ -11,6 +11,10 @@
   gap: 20px;
   position: relative;
 
+  @media (width <= 790px)  {
+    backdrop-filter: blur(1px);
+  }
+
   .tab {
     display: flex;
     align-items: center;
