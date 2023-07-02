@@ -2,6 +2,7 @@ interface Header {
   method: string;
   headers: {
     'Content-Type': string;
+    Referer?: string;
   };
   body: string;
 }
@@ -19,7 +20,8 @@ export const headerPut = (body: string): Header => {
   return {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Referer: 'https://trello-theta-swart.vercel.app/'
     },
     body
   };
