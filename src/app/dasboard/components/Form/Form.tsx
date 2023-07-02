@@ -1,7 +1,7 @@
 'use client';
 import { type CreateTicket, type StatusTicket, type UserGet } from '@/models';
 import style from './form.module.scss';
-import { Button, Input } from '@/components';
+import { Button, Input, MessageError } from '@/components';
 import { useState, type FormEvent } from 'react';
 import { requestCreateTicket } from '@/helper';
 import { useDispatch } from 'react-redux';
@@ -25,17 +25,22 @@ function Form({ status, users, onClose }: Prop): JSX.Element {
     const data = Object.fromEntries(new FormData(dataForm));
     const isEmpty: boolean = Object.values(data).some((item) => item === '');
     setIsEmptyForm(isEmpty);
-    setLoading(true)
+    setLoading(true);
     void requestCreateTicket(data as CreateTicket).then((info) => {
       if (info.length) {
         dispatch(onAddCard(info));
         onClose(false);
       }
-      setLoading(true)
+      setLoading(true);
     });
   };
   return (
-    <div className={style.contentForm}>
+    <div
+      className={style.contentForm}
+      onClick={() => {
+        onClose(false);
+      }}
+    >
       <form action='' onSubmit={onSubmitForm}>
         <Input label='Descripcion de la tarea' name='description' type='text' />
         <select name='document'>
@@ -58,7 +63,7 @@ function Form({ status, users, onClose }: Prop): JSX.Element {
           ))}
         </select>
         {loading ? <CircularProgress /> : <Button name='Crear Ticket' type='submit' />}
-        {isEmptyForm && <span className={style.error}>Completar los campos</span>}
+        {isEmptyForm && <MessageError message={'Completar los campos'} />}
       </form>
     </div>
   );
