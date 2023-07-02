@@ -9,9 +9,9 @@ interface Prop {
   children: React.ReactNode;
 }
 function Guard({ children }: Prop): JSX.Element {
+  const user: User = useSelector((store: StructureStore) => store.user);
+  const path = useRouter();
   useEffect(() => {
-    const user: User = useSelector((store: StructureStore) => store.user);
-    const path = useRouter();
     user.document || path.push('/');
   }, []);
 
