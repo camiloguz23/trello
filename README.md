@@ -7,7 +7,7 @@ it have two pages, first is login after login is the dashboard,
 [this is the link the project :tw-1f4bb:](https://trello-theta-swart.vercel.app/ "this is the link the project")
 
 ## Run project in Development environment for local
-`npm run dev --configure=production`
+`npm run build && npm start`
 
 becuase the database is in a cloud serve
 
