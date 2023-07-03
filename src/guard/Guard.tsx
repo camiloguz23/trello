@@ -1,18 +1,13 @@
 'use client';
 import { useEffect } from 'react';
-import { type User } from '@/models';
-import { type StructureStore } from '@/store/store';
-import { useRouter } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { setCookie } from 'cookies-next';
 
 interface Prop {
   children: React.ReactNode;
 }
 function Guard({ children }: Prop): JSX.Element {
-  const user: User = useSelector((store: StructureStore) => store.user);
-  const path = useRouter();
   useEffect(() => {
-    user.document || path.push('/');
+    setCookie('session', '');
   }, []);
 
   return <>{children}</>;
