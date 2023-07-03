@@ -9,6 +9,7 @@ import { onAddUser } from '@/store/state/user';
 import { useRouter } from 'next/navigation';
 import { onAddCard } from '@/store/state/card';
 import { CircularProgress } from '@mui/material';
+import { setCookie } from 'cookies-next';
 
 function FormLogin(): JSX.Element {
   const dispatch = useDispatch();
@@ -24,18 +25,21 @@ function FormLogin(): JSX.Element {
     requestLogin(data.email as string, data.password as string)
       .then((res) => {
         if (typeof res.user?.error === 'string' || !res.user?.document) {
-          setMessage('Datos invalidos')
-          setLoading(false)
-          return
+          setMessage('Datos invalidos');
+          setLoading(false);
+          return;
         }
         dispatch(onAddUser(res.user));
         dispatch(onAddCard(res.ticket));
-        setLoading(false)
-        setMessage('')
+        setLoading(false);
+        setMessage('');
+        setCookie('session', 'true');
         path.push('/dasboard');
       })
       .catch((err) => {
         console.log(err);
+        setMessage('Error');
+        setLoading(false);
       });
   };
   return (

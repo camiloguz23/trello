@@ -54,5 +54,6 @@ becuase the database is in a cloud serve
     ├── store
     │   ├── state
     │   └── store.ts
+    └── middleware.ts
 
 ```
