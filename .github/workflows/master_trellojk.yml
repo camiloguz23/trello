@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'trellojk'
           slot-name: 'Production'
-          package: .next/
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CCCCB31A321C4CEE909CE2B04B9C746D }}
